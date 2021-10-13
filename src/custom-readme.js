@@ -53,7 +53,8 @@ app.get('/top-languages', async (req, res) => {
         const image = await nodeHtmlToImage({
             transparent: true,
             waitUtil: "domcontentloaded",
-            html: html_file
+            html: html_file,
+            puppeteerArgs: { args: ['--no-sandbox'] }
         });
 
         res.writeHead(200, { 'Content-Type': 'image/png' });
@@ -62,4 +63,4 @@ app.get('/top-languages', async (req, res) => {
 
 });
 
-app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
+app.listen(PORT, () => console.log(`Listening on ${PORT}`));
