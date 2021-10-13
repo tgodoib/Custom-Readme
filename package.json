@@ -1,0 +1,17 @@
+{
+  "name": "custom-readme",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/custom-readme.js"
+  },
+  "author": "tgodoib",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-handlebars": "^5.3.4",
+    "node-html-to-image": "^3.2.0",
+    "octokit": "^1.7.0"
+  }
+}

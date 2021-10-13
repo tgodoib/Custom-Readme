@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Languages</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap');
+
+        body {
+            position: relative;
+            margin: 0;
+            padding: 0;
+            background: none transparent;
+            width: 500px;
+            height: 300px;
+        }
+
+        div {
+            width: 80%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        h1 {
+            font-family: 'Ubuntu Mono', monospace;
+            color: #C67FFF;
+            width: 100%;
+            text-align: center;
+        }
+
+        span {
+            display: block;
+            height: 15px;
+            width: 100%;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        section {
+            display: inline-block;
+            margin: 0;
+            height: 15px;
+            width: 20px;
+            background-color: black;
+        }
+
+        p {
+            display: inline-block;
+            font-family: 'Ubuntu Mono', monospace;
+            color: #fff;
+            font-weight: bold;
+            width: 50%;
+        }
+
+        i {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border-radius: 10px;
+            transform: translate(0, 25%);
+        }
+    </style>
+
+</head>
+
+<body>
+    <div>
+        <h1>Top Used Languages</h1>
+        <span></span>
+    </div>
+
+    <script>
+        let languages = 'languages_placeholder';
+
+        let colors = ["#22BF7B", "#5CD6C2", "#228BBF", "#3C22BF", "#884CFF", "#C67FFF"]
+
+        let lang_amount = 6;
+        let top_langs_percent = 0;
+        languages.forEach((lang, i) => {
+            if (i < lang_amount) top_langs_percent += lang[1] / 100;
+        });
+
+        let total_width = document.getElementsByTagName("span").item(0).clientWidth;
+        for (let i = 0; i < lang_amount; i++) {
+            let sec = document.createElement("section");
+
+            let width = (languages[i][1] / 100) * total_width / top_langs_percent;
+            sec.style.width = width + "px";
+
+            sec.style.backgroundColor = colors[i]/* "#" + Math.floor(Math.random() * 16777215).toString(16) */;
+            document.getElementsByTagName("span").item(0).appendChild(sec);
+
+            let circle = document.createElement("i");
+            circle.style.backgroundColor = colors[i];
+            let p = document.createElement("p");
+            p.style.color = colors[i];
+            p.innerText = " " + languages[i][0] + " - " + Math.round(languages[i][1] * 10) / 10 + "%";
+            p.prepend(circle);
+            document.getElementsByTagName("div").item(0).appendChild(p);
+
+        }
+    </script>
+
+</body>
+
+</html>
